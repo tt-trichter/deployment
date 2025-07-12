@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/definitelynotsimon13/trichter:latest
+    image: ghcr.io/tt-trichter/app:main
     environment:
       DATABASE_URL: ${DATABASE_URL}
       BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET}
