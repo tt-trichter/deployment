@@ -20,6 +20,10 @@ services:
       - 'traefik.http.routers.frontend.rule=Host(`${TRAEFIK_BASE_URL}`)'
       - 'traefik.http.routers.frontend.entrypoints=websecure'
       - 'traefik.http.routers.frontend.tls.certresolver=myresolver'
+
+      - 'traefik.http.routers.frontend-ip.rule=Host(`4.231.40.213`)'
+      - 'traefik.http.routers.frontend-ip.entrypoints=web'
+
       - 'com.centurylinklabs.watchtower.enable=true'
 
   traefik:
@@ -34,8 +38,8 @@ services:
       - '--certificatesresolvers.myresolver.acme.email=simon21.blum@gmail.com'
       - '--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json'
       - '--entrypoints.web.address=:80'
-      - '--entrypoints.web.http.redirections.entrypoint.to=websecure'
-      - '--entrypoints.web.http.redirections.entrypoint.scheme=https'
+      # - '--entrypoints.web.http.redirections.entrypoint.to=websecure'
+      # - '--entrypoints.web.http.redirections.entrypoint.scheme=https'
       - '--metrics.prometheus=true'
     restart: unless-stopped
     ports:
